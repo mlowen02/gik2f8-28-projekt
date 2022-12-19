@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Filmer</title>
+</head>
+<body class="min-h-screen bg-gradient-to-r from-purple-500 to-pink-500 place-content-center">
+  <header>
+    <h1 class="text-center text-6xl text-green-500 mb-6">
+      Filmer
+    </h1>
+  </header>
+  <main id="root">
+    <section class="m-8 gap-10 bg-gradient-to-tl from-green-500 to-blue-400 bg-opacity-75 p-5 rounded-lg">
+      <h2 class="mb-6 text-3xl text-orange-900 w-1/2">Lägg till en film</h2>
+      <form id="moviesForm" name="moviesForm" class="w-1/2">
+        <input type="text" id="title" name="title" placeholder="Titel"
+          class="w-1/2 rounded-md border-blue-500 border-2 focus:border-yellow-600 px-4 py-2 mb-8" />
+        <textarea maxlength="500" rows="1" id="producer" name="producer" placeholder="Producent"
+          class="resize-none w-1/2 rounded-md border-blue-500 border-2 focus:border-yellow-600 px-4 py-2 mb-8"></textarea>
+        <input type="date" id="releaseDate" name="releaseDate" class="w-1/2 rounded-md border-blue-500 border-2 px-4 py-2 mb-4" />
+        <button name="submitMoviesForm" class="rounded-md bg-blue-500 hover:bg-blue-400 px-4 h-10" type="submit">
+          Spara
+        </button>
+        <button name="clear" class="rounded-md bg-blue-500 hover:bg-blue-400 px-4 h-10" onclick="clearFields(event)">
+          Rensa
+        </button>
+      </form>
+    </section>
+    <section class="m-8 flex gap-10 bg-gradient-to-br from-green-500 to-blue-400 bg-opacity-75 p-5 rounded-lg">
+      <section class="flex-1 px-5">
+        <h2 class="mb-6 text-3xl text-orange-900">Alla filmer</h2>
+        <ul id="moviesUL" class="overflow-y-auto h-48 bg-red-500"></ul>
+      </section>
+    </section>
+  </main>
+  <script src="Api.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
