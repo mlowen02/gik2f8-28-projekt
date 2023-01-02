@@ -3,10 +3,9 @@ const api = new Api('http://localhost:5000/movies');
 
 moviesForm.addEventListener('submit', e => {
     e.preventDefault();
-    if(!validFields()){
-        return
-    }
-    sendData();
+    if(validFields()){
+        sendData();
+    } 
 });
 
 function validFields(){
@@ -38,7 +37,7 @@ function sendData(){
     }});
 }
 
-async function printMovies(list){
+async function printMovies(){
     moviesUL.innerHTML = '';
     console.log("printing movies!");
     const movies = await api.getAll();
@@ -47,7 +46,7 @@ async function printMovies(list){
     }); 
 }
 
-function createHTML({title, producer, releaseDate, id}){
+function createHTML({title, releaseDate, id}){
     let html = `
     <li class="border-b flex-row flex p-2 hover:shadow-2xl hover:border-b-4 bg-gradient-to-r from-purple-500 to-pink-500">
         <section>
@@ -78,7 +77,7 @@ function update(id){
     if(releaseDate.value != 0){
         movie = {...movie, releaseDate: releaseDate.value};
     }
-    api.update(id, movie).then(data => {
+    api.update(id, movie).then(() => {
         printMovies();
     })
     .catch(error => console.log(error));
